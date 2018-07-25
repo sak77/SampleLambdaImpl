@@ -21,9 +21,25 @@ public class MainActivity extends AppCompatActivity {
     From Java 8 onwards, lambda expressions can be used to represent the instance of a functional interface.
     A functional interface can have any number of default methods.
     Runnable, ActionListener, Comparable are some of the examples of functional interfaces.
+
+    There’s an annotation introduced- @FunctionalInterface which can be used for compiler level
+    errors when the interface you have annotated is not a valid Functional Interface.
+
+    Although functional interface allows only a single abstract method. However, it can still
+    declare abstract methods from java.lang.Object class and still be considered a valid
+    Functional interface. For eg. below we can add methods such as
+    String toString()
+    boolean equals(Object o)
+    to the interface but still we do not get any Compile error warnings from @FunctionalInterface
      */
+    @FunctionalInterface
     interface Circle{
         double get(double radius);
+        //Default method uses the default keyword in the method declaration.
+        //Also it can ahve its own implementation insside the interface.
+        default void doSomeWork(){
+            Log.d("", "");
+        }
     }
 
     @Override
@@ -109,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
 }
 
 class MyImplClass {
-    //Functional interface is an interface with only one method...similar as View.OnClickListener interface.
+    //Functional interface is an interface with only one abstract method...
+    // similar as View.OnClickListener interface. <
     public interface MyButtonClickListener {
         void myButtonClicked(String value);
     }
