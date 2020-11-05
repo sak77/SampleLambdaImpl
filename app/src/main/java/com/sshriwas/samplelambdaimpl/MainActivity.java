@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
      */
     @FunctionalInterface
     interface Circle{
-        double get(double radius);
+        double get(double radius);  //abstract method
         //Default method uses the default keyword in the method declaration.
-        //Also it can ahve its own implementation insside the interface.
+        //Also it can ahve its own implementation inside the interface.
         default void doSomeWork(){
             Log.d("", "");
         }
